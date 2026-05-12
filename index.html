@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jayanth Ganne — Computer Science Engineer & Program Analyst</title>
+<meta name="description" content="Jayanth Ganne — Computer Science Engineer with experience in software testing, application development, and enterprise systems. AWS certified. Based in Adelaide, Australia." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================
+     DESIGN TOKENS — monochrome minimal
+     ============================================ */
+  :root {
+    /* Spacing — 8px base */
+    --s-1: 8px;
+    --s-2: 16px;
+    --s-3: 24px;
+    --s-4: 32px;
+    --s-6: 48px;
+    --s-8: 64px;
+    --s-12: 96px;
+
+    /* Type scale */
+    --t-hero: clamp(40px, 9vw, 96px);
+    --t-h2: clamp(32px, 5vw, 56px);
+    --t-h3: 24px;
+    --t-body: 16px;
+    --t-label: 13px;
+
+    /* Radii */
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+    --r-pill: 999px;
+
+    /* Motion */
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur: 0.5s;
+  }
+
+  /* Dark theme — monochrome */
+  [data-theme="dark"] {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --card: #161616;
+    --border: #232323;
+    --border-strong: #2e2e2e;
+    --text: #f5f5f5;
+    --text-2: #a3a3a3;
+    --text-3: #6b6b6b;
+    --accent: #ffffff;        /* monochrome accent = pure white */
+    --accent-2: #d4d4d4;
+    --accent-glow: rgba(255, 255, 255, 0.12);
+    --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 16px 40px rgba(0, 0, 0, 0.7);
+    --hero-grad: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 60%);
+    --grid-color: rgba(255, 255, 255, 0.035);
+  }
+
+  /* Light theme — monochrome inverse */
+  [data-theme="light"] {
+    --bg: #ffffff;
+    --surface: #fafafa;
+    --card: #f5f5f5;
+    --border: #e5e5e5;
+    --border-strong: #d4d4d4;
+    --text: #0f172a;
+    --text-2: #475569;
+    --text-3: #94a3b8;
+    --accent: #0a0a0a;
+    --accent-2: #404040;
+    --accent-glow: rgba(0, 0, 0, 0.08);
+    --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+    --shadow-hover: 0 1px 2px rgba(15, 23, 42, 0.06), 0 16px 40px rgba(15, 23, 42, 0.10);
+    --hero-grad: radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.06), transparent 60%);
+    --grid-color: rgba(0, 0, 0, 0.04);
+  }
+
+  /* ============================================
+     RESET / BASE
+     ============================================ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: var(--t-body);
+    line-height: 1.7;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ::selection { background: var(--text); color: var(--bg); }
+
+  h1, h2, h3, h4 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .mono { font-family: 'Fira Code', monospace; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 var(--s-3);
+  }
+
+  /* ============================================
+     NAVBAR
+     ============================================ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: var(--s-2) 0;
+    transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), backdrop-filter var(--dur) var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+  }
+  .logo {
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo::before {
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--text);
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--text-2);
+    transition: color 0.2s var(--ease);
+    position: relative;
+    padding: 4px 0;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--text);
+  }
+  .nav-links a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 1px;
+    background: var(--text);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+  }
+  .theme-toggle {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    display: grid;
+    place-items: center;
+    color: var(--text-2);
+    transition: all 0.2s var(--ease);
+  }
+  .theme-toggle:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  [data-theme="dark"] .icon-sun { display: block; }
+  [data-theme="dark"] .icon-moon { display: none; }
+  [data-theme="light"] .icon-sun { display: none; }
+  [data-theme="light"] .icon-moon { display: block; }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: var(--r-md);
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--text);
+    color: var(--bg);
+    transition: all 0.2s var(--ease);
+  }
+  .cta:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+  }
+  .cta.ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+  }
+  .cta.ghost:hover {
+    border-color: var(--text);
+  }
+
+  .nav-toggle { display: none; }
+
+  /* ============================================
+     HERO
+     ============================================ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: var(--s-12) 0 var(--s-8);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      var(--hero-grad),
+      linear-gradient(var(--grid-color) 1px, transparent 1px) 0 0 / 64px 64px,
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px) 0 0 / 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent 75%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-family: 'Fira Code', monospace;
+    font-size: var(--t-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    margin-bottom: var(--s-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.7s var(--ease) 0.05s forwards;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18); }
+    50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  }
+  .hero h1 {
+    font-size: var(--t-hero);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--s-3);
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 0.15s forwards;
+  }
+  .hero h1 .last {
+    color: var(--text-2);
+    font-weight: 300;
+  }
+  .typewriter-wrap {
+    font-size: clamp(20px, 3vw, 28px);
+    font-family: 'Fira Code', monospace;
+    color: var(--text);
+    margin-bottom: var(--s-3);
+    height: 1.4em;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 0.35s forwards;
+  }
+  .typewriter-wrap::before {
+    content: "› ";
+    color: var(--text-3);
+  }
+  .typewriter {
+    border-right: 2px solid var(--text);
+    padding-right: 2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { border-right-color: transparent; }
+  }
+  .hero-bio {
+    max-width: 620px;
+    color: var(--text-2);
+    font-size: 18px;
+    line-height: 1.65;
+    margin-bottom: var(--s-4);
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 0.5s forwards;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: var(--s-2);
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 0.65s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: var(--s-4);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 0.9s forwards;
+  }
+  .hero-scroll-hint .line {
+    width: 1px; height: 32px;
+    background: linear-gradient(to bottom, var(--text-3), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 0.6; }
+    50% { transform: scaleY(1.3); opacity: 1; }
+  }
+
+  /* ============================================
+     SECTION GENERAL
+     ============================================ */
+  section { padding: var(--s-12) 0; position: relative; }
+
+  .section-head {
+    margin-bottom: var(--s-6);
+  }
+  .section-num {
+    font-family: 'Fira Code', monospace;
+    font-size: var(--t-label);
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: var(--s-2);
+  }
+  .section-num::before {
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--text-3);
+  }
+  .section-head h2 {
+    font-size: var(--t-h2);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .section-head h2 .accent {
+    color: var(--text-3);
+    font-weight: 300;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============================================
+     ABOUT
+     ============================================ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--s-6);
+    align-items: start;
+  }
+  .about-bio {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-2);
+  }
+  .about-bio p { margin: 0 0 var(--s-2); }
+  .about-bio strong { color: var(--text); font-weight: 600; }
+  .current-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    font-size: 13px;
+    color: var(--text-2);
+    margin-top: var(--s-2);
+    background: var(--surface);
+  }
+  .current-badge .pulse {
+    width: 7px; height: 7px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-2);
+  }
+  .stat {
+    padding: var(--s-3);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--card);
+    transition: all 0.3s var(--ease);
+  }
+  .stat:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+  .stat-num {
+    font-family: 'Fira Code', monospace;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: 0.02em;
+  }
+
+  /* ============================================
+     EXPERIENCE — timeline
+     ============================================ */
+  .timeline {
+    position: relative;
+    padding-left: var(--s-4);
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 11px; top: 4px; bottom: 4px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border-strong) 8%, var(--border-strong) 92%, transparent);
+  }
+  .timeline::after {
+    content: "";
+    position: absolute;
+    left: 9px; top: 4px;
+    width: 5px; height: 60%;
+    background: linear-gradient(to bottom, var(--text), transparent);
+    filter: blur(4px);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .exp-item {
+    position: relative;
+    margin-bottom: var(--s-3);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--card);
+    transition: all 0.3s var(--ease);
+    overflow: hidden;
+  }
+  .exp-item:hover {
+    border-color: var(--border-strong);
+  }
+  .exp-item::before {
+    content: "";
+    position: absolute;
+    left: -29px; top: 28px;
+    width: 11px; height: 11px;
+    background: var(--bg);
+    border: 2px solid var(--text);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .exp-header {
+    width: 100%;
+    text-align: left;
+    padding: var(--s-3);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--s-2);
+    cursor: pointer;
+  }
+  .exp-logo {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: var(--r-md);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    display: grid;
+    place-items: center;
+    font-family: 'Fira Code', monospace;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text);
+  }
+  .exp-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .exp-role {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .exp-company {
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .exp-dates {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+    margin-top: 6px;
+    display: inline-block;
+  }
+  .exp-chevron {
+    flex-shrink: 0;
+    width: 24px; height: 24px;
+    display: grid;
+    place-items: center;
+    color: var(--text-3);
+    transition: transform 0.3s var(--ease), color 0.2s var(--ease);
+  }
+  .exp-item.open .exp-chevron {
+    transform: rotate(180deg);
+    color: var(--text);
+  }
+  .exp-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease);
+  }
+  .exp-item.open .exp-body {
+    max-height: 800px;
+  }
+  .exp-body-inner {
+    padding: 0 var(--s-3) var(--s-3) calc(var(--s-3) + 44px + var(--s-2));
+  }
+  .exp-body ul {
+    margin: 0; padding: 0;
+    list-style: none;
+  }
+  .exp-body li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--text-2);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+  .exp-body li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 8px; height: 1px;
+    background: var(--text-3);
+  }
+  .exp-body li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ============================================
+     SKILLS
+     ============================================ */
+  .skills-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-3) var(--s-4);
+    margin-bottom: var(--s-6);
+  }
+  .skill-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .skill-bar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .skill-bar-head .name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .skill-bar-head .level {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .skill-bar-track {
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--text-2), var(--text));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.2s var(--ease);
+  }
+
+  .skill-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-3);
+  }
+  .skill-group {
+    padding: var(--s-3);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--card);
+    transition: all 0.3s var(--ease);
+  }
+  .skill-group:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+  .skill-group h4 {
+    font-size: 12px;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    margin-bottom: var(--s-2);
+    font-weight: 500;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-pill);
+    font-size: 13px;
+    color: var(--text);
+    transition: all 0.2s var(--ease);
+    font-family: 'Fira Code', monospace;
+    font-weight: 400;
+  }
+  .pill:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  /* ============================================
+     PROJECTS
+     ============================================ */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-3);
+  }
+  .project-card {
+    position: relative;
+    padding: var(--s-4);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    transition: all 0.3s var(--ease);
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--text);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s var(--ease);
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+  .project-card:hover::before {
+    transform: scaleY(1);
+  }
+  .project-card .num {
+    position: absolute;
+    top: var(--s-3);
+    right: var(--s-3);
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .project-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .project-tag {
+    display: inline-block;
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: var(--s-2);
+  }
+  .project-desc {
+    color: var(--text-2);
+    line-height: 1.65;
+    font-size: 15px;
+    margin-bottom: var(--s-2);
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--s-2);
+  }
+  .project-stack .pill {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+  .project-links {
+    display: flex;
+    gap: var(--s-2);
+    margin-top: var(--s-2);
+  }
+  .project-links a {
+    font-size: 13px;
+    color: var(--text-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: all 0.2s var(--ease);
+  }
+  .project-links a:hover {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+  .project-links a svg { width: 14px; height: 14px; }
+
+  /* ============================================
+     CERTIFICATIONS / EDUCATION
+     ============================================ */
+  .cert-edu-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-4);
+  }
+  .cert-edu-block h3 {
+    font-size: 18px;
+    margin-bottom: var(--s-2);
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+  }
+  .info-card {
+    padding: var(--s-3);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    transition: all 0.3s var(--ease);
+    display: flex;
+    gap: var(--s-2);
+    align-items: flex-start;
+  }
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+  .info-card .icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: var(--r-md);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    display: grid;
+    place-items: center;
+    color: var(--text);
+  }
+  .info-card .icon svg { width: 18px; height: 18px; }
+  .info-card .info-body { flex: 1; min-width: 0; }
+  .info-card h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .info-card .meta {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 4px;
+  }
+  .info-card .year {
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .info-card a.cred-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: 8px;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 1px;
+    transition: all 0.2s var(--ease);
+  }
+  .info-card a.cred-link:hover {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  /* ============================================
+     CONTACT
+     ============================================ */
+  .contact {
+    text-align: center;
+    padding: var(--s-12) 0;
+  }
+  .contact-headline {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--s-2);
+    line-height: 1.05;
+  }
+  .contact-headline .accent {
+    color: var(--text-3);
+    font-weight: 300;
+    font-style: italic;
+  }
+  .contact-sub {
+    color: var(--text-2);
+    max-width: 560px;
+    margin: 0 auto var(--s-4);
+    font-size: 18px;
+  }
+  .contact-email {
+    display: inline-block;
+    font-family: 'Fira Code', monospace;
+    font-size: clamp(18px, 2.4vw, 24px);
+    color: var(--text);
+    margin-bottom: var(--s-4);
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 6px;
+    transition: all 0.2s var(--ease);
+  }
+  .contact-email:hover {
+    border-bottom-color: var(--text);
+    transform: translateY(-2px);
+  }
+  .socials {
+    display: flex;
+    gap: var(--s-2);
+    justify-content: center;
+  }
+  .social-link {
+    width: 48px; height: 48px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    display: grid;
+    place-items: center;
+    color: var(--text-2);
+    transition: all 0.3s var(--ease);
+  }
+  .social-link:hover {
+    color: var(--bg);
+    background: var(--text);
+    border-color: var(--text);
+    transform: translateY(-4px);
+  }
+  .social-link svg { width: 20px; height: 20px; }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: var(--s-3) 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-2);
+    flex-wrap: wrap;
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 64px; left: var(--s-3); right: var(--s-3);
+      flex-direction: column;
+      gap: var(--s-2);
+      padding: var(--s-3);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+    }
+    .nav-toggle {
+      display: grid;
+      place-items: center;
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      color: var(--text-2);
+    }
+    .cta-hire { display: none; }
+    .about-grid,
+    .skill-groups,
+    .skills-top,
+    .projects-grid,
+    .cert-edu-wrap {
+      grid-template-columns: 1fr;
+    }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .exp-body-inner {
+      padding: 0 var(--s-3) var(--s-3) var(--s-3);
+    }
+    section { padding: var(--s-8) 0; }
+    .hero { padding: var(--s-8) 0 var(--s-6); }
+  }
+
+  @media (max-width: 480px) {
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .hero-ctas .cta { justify-content: center; }
+    .stats { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAV
+     ============================================ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">jayanth.ganne</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#credentials" class="nav-link">Credentials</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="cta cta-hire">Hire me</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span> Available for opportunities · Adelaide, SA</div>
+    <h1>Jayanth Ganne<span class="last">.</span></h1>
+    <div class="typewriter-wrap"><span class="typewriter" id="typewriter"></span></div>
+    <p class="hero-bio">
+      Computer Science Engineer with a Master's in Business Information Systems and hands-on experience in software testing, application development, and enterprise systems. I write clean code, hunt down bugs, and ship reliable software in Agile teams.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="cta">View my work →</a>
+      <a href="#" id="downloadResume" class="cta ghost">Download Resume ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><span>Scroll</span><span class="line"></span></div>
+</header>
+
+<!-- ============================================
+     ABOUT
+     ============================================ -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">01 / About</div>
+      <h2>A builder who tests <span class="accent">what he ships.</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-bio reveal">
+        <p>
+          I'm a <strong>Computer Science Engineer</strong> trained at Cognizant Technology Solutions and currently pursuing a Master's in Business Information Systems at Torrens University, Adelaide.
+        </p>
+        <p>
+          My background sits at the intersection of <strong>development</strong> and <strong>quality assurance</strong> — I've written test cases in JIRA, supported enterprise web apps for a global healthcare client, and built deep learning models for academic projects. AWS certified, Agile-fluent, and ready to contribute from day one.
+        </p>
+        <div class="current-badge"><span class="pulse"></span> Currently at Woolworths Group — Adelaide CFC</div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat-num" data-target="2" data-suffix="+">0</div>
+          <div class="stat-label">Years industry experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-target="2" data-suffix="">0</div>
+          <div class="stat-label">AWS certifications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-target="2" data-suffix="">0</div>
+          <div class="stat-label">Major projects delivered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-target="6" data-suffix=" mo">0</div>
+          <div class="stat-label">Cognizant training program</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     EXPERIENCE
+     ============================================ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">02 / Experience</div>
+      <h2>Where I've <span class="accent">worked.</span></h2>
+    </div>
+    <div class="timeline">
+
+      <article class="exp-item open reveal">
+        <button class="exp-header" aria-expanded="true">
+          <div class="exp-logo">W</div>
+          <div class="exp-meta">
+            <div class="exp-role">Dispatch Team Member <span style="color:var(--text-3);font-weight:400;font-size:13px;">(Part-time)</span></div>
+            <div class="exp-company">Woolworths Group — CFC, Adelaide</div>
+            <span class="exp-dates">SEP 2025 → PRESENT</span>
+          </div>
+          <span class="exp-chevron">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul>
+              <li>Operated internal <strong>WMS and digital scanning systems</strong> to manage high-volume eCommerce order processing with strict accuracy targets.</li>
+              <li>Identified and resolved <strong>system discrepancies and order errors</strong> in real time, preventing downstream operational delays.</li>
+              <li>Consistently met <strong>accuracy and speed KPIs</strong> by adhering to SOPs and quality control processes in a fast-paced fulfillment environment.</li>
+              <li>Demonstrated reliability and attention to detail under pressure — transferable directly to QA and production-grade engineering work.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="exp-item reveal">
+        <button class="exp-header" aria-expanded="false">
+          <div class="exp-logo">C</div>
+          <div class="exp-meta">
+            <div class="exp-role">Program Analyst Trainee</div>
+            <div class="exp-company">Cognizant Technology Solutions — Hyderabad, India</div>
+            <span class="exp-dates">DEC 2022 → DEC 2023</span>
+          </div>
+          <span class="exp-chevron">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul>
+              <li>Completed structured <strong>6-month technical training</strong> in Java, C#, .NET and enterprise web application development practices.</li>
+              <li>Wrote and executed <strong>manual test cases</strong> for an enterprise web application supporting a global healthcare client; logged defects in JIRA and tracked them through to sign-off.</li>
+              <li>Performed <strong>regression testing and UAT support</strong> to validate that application changes met business and functional requirements.</li>
+              <li>Troubleshot application bugs, documented <strong>root causes</strong>, and communicated fixes to development and QA teams.</li>
+              <li>Collaborated daily with developers, business analysts, and QA engineers in <strong>Agile sprint cycles</strong> within a structured enterprise delivery environment.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SKILLS
+     ============================================ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">03 / Skills</div>
+      <h2>The tools I <span class="accent">reach for.</span></h2>
+    </div>
+
+    <div class="skills-top reveal">
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">Java</span><span class="level">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">Manual Testing & QA</span><span class="level">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">SQL</span><span class="level">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">Python</span><span class="level">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="78"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">.NET / C#</span><span class="level">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="72"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">AWS Cloud</span><span class="level">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="75"></div></div></div>
+    </div>
+
+    <div class="skill-groups">
+      <div class="skill-group reveal">
+        <h4>Languages</h4>
+        <div class="pills">
+          <span class="pill">Java</span>
+          <span class="pill">Python</span>
+          <span class="pill">C#</span>
+          <span class="pill">SQL</span>
+          <span class="pill">HTML</span>
+          <span class="pill">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>QA &amp; Testing</h4>
+        <div class="pills">
+          <span class="pill">Manual Testing</span>
+          <span class="pill">Test Case Writing</span>
+          <span class="pill">Defect Reporting</span>
+          <span class="pill">Regression</span>
+          <span class="pill">UAT</span>
+          <span class="pill">STLC</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Frameworks &amp; Platforms</h4>
+        <div class="pills">
+          <span class="pill">.NET</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">AWS</span>
+          <span class="pill">ERP / WMS</span>
+          <span class="pill">SharePoint</span>
+          <span class="pill">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Tools &amp; Methodologies</h4>
+        <div class="pills">
+          <span class="pill">JIRA</span>
+          <span class="pill">Git</span>
+          <span class="pill">Agile</span>
+          <span class="pill">Scrum</span>
+          <span class="pill">SDLC</span>
+          <span class="pill">MS Office</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROJECTS
+     ============================================ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">04 / Projects</div>
+      <h2>Featured <span class="accent">work.</span></h2>
+    </div>
+    <div class="projects-grid">
+
+      <article class="project-card reveal">
+        <span class="num">01</span>
+        <span class="project-tag">Capstone Project</span>
+        <h3>Information Systems Architecture for a Distributed Workforce</h3>
+        <p class="project-desc">
+          Designed an enterprise information systems architecture supporting remote and hybrid workforce operations, covering security, scalability, and integration requirements across the stack.
+        </p>
+        <div class="project-stack">
+          <span class="pill">Enterprise Architecture</span>
+          <span class="pill">Security</span>
+          <span class="pill">Integration</span>
+          <span class="pill">Scalability</span>
+        </div>
+        <div class="project-links">
+          <a href="#" aria-disabled="true" style="opacity:.5;cursor:not-allowed;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Academic / Internal
+          </a>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <span class="num">02</span>
+        <span class="project-tag">Final Year Project</span>
+        <h3>Leaf Disease Detection using Deep Learning</h3>
+        <p class="project-desc">
+          Built a CNN-based deep learning model in Python to classify leaf diseases from image data, achieving accurate detection across multiple plant disease categories for agricultural use cases.
+        </p>
+        <div class="project-stack">
+          <span class="pill">Python</span>
+          <span class="pill">CNN</span>
+          <span class="pill">Deep Learning</span>
+          <span class="pill">Image Classification</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Jayanthganne" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CERTIFICATIONS / EDUCATION
+     ============================================ -->
+<section id="credentials">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">05 / Credentials</div>
+      <h2>Certifications &amp; <span class="accent">education.</span></h2>
+    </div>
+    <div class="cert-edu-wrap">
+
+      <div class="cert-edu-block">
+        <h3>Certifications</h3>
+        <div class="cards-grid">
+          <div class="info-card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+            <div class="info-body">
+              <h4>AWS Cloud Architecting</h4>
+              <div class="meta">Amazon Web Services</div>
+              <div class="year">CERTIFIED</div>
+              <a class="cred-link" href="https://www.credly.com/badges/718ff19a-6a43-49dc-8774-80da4f8efc57" target="_blank" rel="noopener">Verify on Credly →</a>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+            <div class="info-body">
+              <h4>AWS Cloud Foundations</h4>
+              <div class="meta">Amazon Web Services</div>
+              <div class="year">CERTIFIED</div>
+              <a class="cred-link" href="https://www.credly.com/badges/8b303df0-902c-4437-b469-85619b06d231" target="_blank" rel="noopener">Verify on Credly →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-edu-block">
+        <h3>Education</h3>
+        <div class="cards-grid">
+          <div class="info-card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+            <div class="info-body">
+              <h4>Master of Business Information Systems</h4>
+              <div class="meta">Torrens University Australia, Adelaide</div>
+              <div class="year">FEB 2024 → DEC 2025</div>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+            <div class="info-body">
+              <h4>B.Tech, Computer Science &amp; Engineering</h4>
+              <div class="meta">Vel Tech University, Chennai, India</div>
+              <div class="year">JUL 2018 → DEC 2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+     ============================================ -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num" style="justify-content:center;">06 / Contact</div>
+      <h2 class="contact-headline">Let's build <span class="accent">something together.</span></h2>
+      <p class="contact-sub">
+        Open to software engineering, QA, and program analyst roles in Adelaide and beyond. Ping me — I usually reply within 24 hours.
+      </p>
+      <a href="mailto:jayanthganne45@gmail.com" class="contact-email">jayanthganne45@gmail.com</a>
+      <div class="socials">
+        <a class="social-link" href="mailto:jayanthganne45@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/in/jayanthganne-9798b739b" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        </a>
+        <a class="social-link" href="https://github.com/Jayanthganne" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Jayanth Ganne</span>
+    <span>Built with HTML, CSS &amp; vanilla JS · Adelaide, SA</span>
+  </div>
+</footer>
+
+<script>
+  // ============================================
+  // THEME TOGGLE
+  // ============================================
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const stored = localStorage.getItem('theme');
+  if (stored) html.setAttribute('data-theme', stored);
+  themeToggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // ============================================
+  // NAV SCROLL EFFECT
+  // ============================================
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ============================================
+  // MOBILE MENU
+  // ============================================
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ============================================
+  // TYPEWRITER
+  // ============================================
+  const roles = ['Software Engineer.', 'QA Engineer.', 'Program Analyst.', 'Builder.'];
+  const tw = document.getElementById('typewriter');
+  let roleIdx = 0, charIdx = 0, deleting = false;
+  function type() {
+    const current = roles[roleIdx];
+    if (!deleting) {
+      tw.textContent = current.slice(0, ++charIdx);
+      if (charIdx === current.length) {
+        deleting = true;
+        return setTimeout(type, 1800);
+      }
+    } else {
+      tw.textContent = current.slice(0, --charIdx);
+      if (charIdx === 0) {
+        deleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+      }
+    }
+    setTimeout(type, deleting ? 40 : 75);
+  }
+  setTimeout(type, 800);
+
+  // ============================================
+  // REVEAL ON SCROLL (Intersection Observer)
+  // ============================================
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // ============================================
+  // STAT COUNT-UP
+  // ============================================
+  const statNums = document.querySelectorAll('.stat-num');
+  const statIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const dur = 1200;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(target * ease) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target + suffix;
+        };
+        requestAnimationFrame(tick);
+        statIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(el => statIO.observe(el));
+
+  // ============================================
+  // SKILL BAR ANIMATION
+  // ============================================
+  const bars = document.querySelectorAll('.skill-bar-fill');
+  const barIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        el.style.width = el.dataset.level + '%';
+        barIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => barIO.observe(b));
+
+  // ============================================
+  // ACCORDION
+  // ============================================
+  document.querySelectorAll('.exp-item').forEach(item => {
+    const header = item.querySelector('.exp-header');
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.exp-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      header.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+
+  // ============================================
+  // ACTIVE NAV LINK ON SCROLL
+  // ============================================
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinkEls = document.querySelectorAll('.nav-link');
+  const setActive = () => {
+    const y = window.scrollY + 120;
+    let current = '';
+    sections.forEach(s => {
+      if (s.offsetTop <= y) current = s.id;
+    });
+    navLinkEls.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // ============================================
+  // RESUME DOWNLOAD — builds a text resume on the fly
+  // ============================================
+  document.getElementById('downloadResume').addEventListener('click', (e) => {
+    e.preventDefault();
+    const resume = `JAYANTH GANNE
+Computer Science Engineer | Software Tester | Developer | Program Analyst
+Adelaide, SA · +61 423 280 046 · jayanthganne45@gmail.com
+linkedin.com/in/jayanthganne-9798b739b · github.com/Jayanthganne
+
+PROFESSIONAL SUMMARY
+Computer Science Engineer with a Master's in Business Information Systems
+and hands-on experience in software testing, application development support,
+and enterprise systems at Cognizant Technology Solutions. Skilled in Java,
+.NET, Python, and SQL, with practical experience writing test cases, logging
+defects in JIRA, and working within Agile teams. AWS certified with strong
+debugging and problem-solving skills.
+
+TECHNICAL SKILLS
+Languages: Java, Python, SQL, C#, HTML, CSS
+QA & Testing: Manual Testing, Test Case Writing, Defect Reporting, Regression, UAT
+Tools: JIRA, Git, REST APIs, MS Office, SharePoint, Power BI, ERP/WMS
+Methodologies: Agile, Scrum, SDLC, STLC
+Cloud: AWS Cloud Architecting, AWS Cloud Foundations
+
+WORK EXPERIENCE
+Dispatch Team Member — Woolworths Group, Adelaide (Sep 2025 – Present)
+Program Analyst Trainee — Cognizant Technology Solutions, India (Dec 2022 – Dec 2023)
+
+EDUCATION
+Master of Business Information Systems — Torrens University Australia (2024–2025)
+B.Tech Computer Science & Engineering — Vel Tech University, Chennai (2018–2022)
+
+CERTIFICATIONS
+AWS Cloud Architecting · AWS Cloud Foundations`;
+    const blob = new Blob([resume], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Jayanth_Ganne_Resume.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // ============================================
+  // YEAR
+  // ============================================
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
