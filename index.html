@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jayanth Ganne — Computer Science Engineer & Program Analyst</title>
-<meta name="description" content="Jayanth Ganne — Computer Science Engineer with experience in software testing, application development, and enterprise systems. AWS certified. Based in Adelaide, Australia." />
+<title>Jayanth Ganne — IT Support · Software Tester (QA) · Junior Developer</title>
+<meta name="description" content="Jayanth Ganne — Adelaide-based IT graduate with a Master of Business Information Systems and enterprise experience in IT support, software testing, and development. AWS Certified." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -13,7 +14,6 @@
      DESIGN TOKENS — monochrome minimal
      ============================================ */
   :root {
-    /* Spacing — 8px base */
     --s-1: 8px;
     --s-2: 16px;
     --s-3: 24px;
@@ -21,26 +21,22 @@
     --s-6: 48px;
     --s-8: 64px;
     --s-12: 96px;
-
-    /* Type scale */
+ 
     --t-hero: clamp(40px, 9vw, 96px);
     --t-h2: clamp(32px, 5vw, 56px);
     --t-h3: 24px;
     --t-body: 16px;
     --t-label: 13px;
-
-    /* Radii */
+ 
     --r-sm: 6px;
     --r-md: 10px;
     --r-lg: 16px;
     --r-pill: 999px;
-
-    /* Motion */
+ 
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --dur: 0.5s;
   }
-
-  /* Dark theme — monochrome */
+ 
   [data-theme="dark"] {
     --bg: #0a0a0a;
     --surface: #111111;
@@ -50,7 +46,7 @@
     --text: #f5f5f5;
     --text-2: #a3a3a3;
     --text-3: #6b6b6b;
-    --accent: #ffffff;        /* monochrome accent = pure white */
+    --accent: #ffffff;
     --accent-2: #d4d4d4;
     --accent-glow: rgba(255, 255, 255, 0.12);
     --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px rgba(0, 0, 0, 0.6);
@@ -58,8 +54,7 @@
     --hero-grad: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 60%);
     --grid-color: rgba(255, 255, 255, 0.035);
   }
-
-  /* Light theme — monochrome inverse */
+ 
   [data-theme="light"] {
     --bg: #ffffff;
     --surface: #fafafa;
@@ -77,10 +72,7 @@
     --hero-grad: radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.06), transparent 60%);
     --grid-color: rgba(0, 0, 0, 0.04);
   }
-
-  /* ============================================
-     RESET / BASE
-     ============================================ */
+ 
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
@@ -99,22 +91,22 @@
   button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
   img { max-width: 100%; display: block; }
   ::selection { background: var(--text); color: var(--bg); }
-
+ 
   h1, h2, h3, h4 {
     line-height: 1.2;
     letter-spacing: -0.02em;
     font-weight: 700;
     margin: 0;
   }
-
+ 
   .mono { font-family: 'Fira Code', monospace; }
-
+ 
   .container {
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 var(--s-3);
   }
-
+ 
   /* ============================================
      NAVBAR
      ============================================ */
@@ -202,7 +194,7 @@
   [data-theme="dark"] .icon-moon { display: none; }
   [data-theme="light"] .icon-sun { display: none; }
   [data-theme="light"] .icon-moon { display: block; }
-
+ 
   .cta {
     display: inline-flex;
     align-items: center;
@@ -227,9 +219,9 @@
   .cta.ghost:hover {
     border-color: var(--text);
   }
-
+ 
   .nav-toggle { display: none; }
-
+ 
   /* ============================================
      HERO
      ============================================ */
@@ -314,7 +306,7 @@
     50% { border-right-color: transparent; }
   }
   .hero-bio {
-    max-width: 620px;
+    max-width: 640px;
     color: var(--text-2);
     font-size: 18px;
     line-height: 1.65;
@@ -333,7 +325,7 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
+ 
   .hero-scroll-hint {
     position: absolute;
     bottom: var(--s-4);
@@ -360,12 +352,12 @@
     0%, 100% { transform: scaleY(1); opacity: 0.6; }
     50% { transform: scaleY(1.3); opacity: 1; }
   }
-
+ 
   /* ============================================
      SECTION GENERAL
      ============================================ */
   section { padding: var(--s-12) 0; position: relative; }
-
+ 
   .section-head {
     margin-bottom: var(--s-6);
   }
@@ -394,8 +386,7 @@
     color: var(--text-3);
     font-weight: 300;
   }
-
-  /* Reveal on scroll */
+ 
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -405,7 +396,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-
+ 
   /* ============================================
      ABOUT
      ============================================ */
@@ -441,6 +432,21 @@
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
     animation: pulse 2s ease-in-out infinite;
   }
+  .work-rights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: var(--s-2);
+  }
+  .work-rights .chip {
+    font-family: 'Fira Code', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-pill);
+    color: var(--text-2);
+    letter-spacing: 0.04em;
+  }
   .stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -471,7 +477,7 @@
     color: var(--text-2);
     letter-spacing: 0.02em;
   }
-
+ 
   /* ============================================
      EXPERIENCE — timeline
      ============================================ */
@@ -577,10 +583,10 @@
   .exp-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s var(--ease);
+    transition: max-height 0.6s var(--ease);
   }
   .exp-item.open .exp-body {
-    max-height: 800px;
+    max-height: 1200px;
   }
   .exp-body-inner {
     padding: 0 var(--s-3) var(--s-3) calc(var(--s-3) + 44px + var(--s-2));
@@ -608,7 +614,7 @@
     color: var(--text);
     font-weight: 500;
   }
-
+ 
   /* ============================================
      SKILLS
      ============================================ */
@@ -652,10 +658,10 @@
     width: 0;
     transition: width 1.2s var(--ease);
   }
-
+ 
   .skill-groups {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--s-3);
   }
   .skill-group {
@@ -702,7 +708,7 @@
     color: var(--bg);
     border-color: var(--text);
   }
-
+ 
   /* ============================================
      PROJECTS
      ============================================ */
@@ -750,6 +756,7 @@
     font-size: 22px;
     margin-bottom: 10px;
     letter-spacing: -0.02em;
+    padding-right: 32px;
   }
   .project-tag {
     display: inline-block;
@@ -796,7 +803,7 @@
     border-bottom-color: var(--text);
   }
   .project-links a svg { width: 14px; height: 14px; }
-
+ 
   /* ============================================
      CERTIFICATIONS / EDUCATION
      ============================================ */
@@ -806,7 +813,6 @@
     gap: var(--s-4);
   }
   .cert-edu-block h3 {
-    font-size: 18px;
     margin-bottom: var(--s-2);
     font-family: 'Fira Code', monospace;
     font-weight: 500;
@@ -877,7 +883,7 @@
     color: var(--text);
     border-bottom-color: var(--text);
   }
-
+ 
   /* ============================================
      CONTACT
      ============================================ */
@@ -938,7 +944,7 @@
     transform: translateY(-4px);
   }
   .social-link svg { width: 20px; height: 20px; }
-
+ 
   /* ============================================
      FOOTER
      ============================================ */
@@ -957,10 +963,14 @@
     gap: var(--s-2);
     flex-wrap: wrap;
   }
-
+ 
   /* ============================================
      RESPONSIVE
      ============================================ */
+  @media (max-width: 960px) {
+    .skill-groups { grid-template-columns: repeat(2, 1fr); }
+  }
+ 
   @media (max-width: 860px) {
     .nav-links { display: none; }
     .nav-links.open {
@@ -997,13 +1007,13 @@
     section { padding: var(--s-8) 0; }
     .hero { padding: var(--s-8) 0 var(--s-6); }
   }
-
+ 
   @media (max-width: 480px) {
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .hero-ctas .cta { justify-content: center; }
     .stats { grid-template-columns: 1fr; }
   }
-
+ 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -1014,10 +1024,8 @@
 </style>
 </head>
 <body>
-
-<!-- ============================================
-     NAV
-     ============================================ -->
+ 
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="#top" class="logo">jayanth.ganne</a>
@@ -1041,18 +1049,16 @@
     </div>
   </div>
 </nav>
-
-<!-- ============================================
-     HERO
-     ============================================ -->
+ 
+<!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="container hero-inner">
-    <div class="hero-eyebrow"><span class="dot"></span> Available for opportunities · Adelaide, SA</div>
+    <div class="hero-eyebrow"><span class="dot"></span> Open to work · Adelaide, SA · Will relocate</div>
     <h1>Jayanth Ganne<span class="last">.</span></h1>
     <div class="typewriter-wrap"><span class="typewriter" id="typewriter"></span></div>
     <p class="hero-bio">
-      Computer Science Engineer with a Master's in Business Information Systems and hands-on experience in software testing, application development, and enterprise systems. I write clean code, hunt down bugs, and ship reliable software in Agile teams.
+      Adelaide-based IT graduate with a Master of Business Information Systems and a year of enterprise experience at Cognizant — across development, software testing, and IT support. AWS Certified, comfortable in Agile teams, and ready to contribute from day one.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="cta">View my work →</a>
@@ -1061,51 +1067,55 @@
   </div>
   <div class="hero-scroll-hint"><span>Scroll</span><span class="line"></span></div>
 </header>
-
-<!-- ============================================
-     ABOUT
-     ============================================ -->
+ 
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="section-head reveal">
       <div class="section-num">01 / About</div>
-      <h2>A builder who tests <span class="accent">what he ships.</span></h2>
+      <h2>Developer, tester, <span class="accent">and the person fixing your Outlook.</span></h2>
     </div>
     <div class="about-grid">
       <div class="about-bio reveal">
         <p>
-          I'm a <strong>Computer Science Engineer</strong> trained at Cognizant Technology Solutions and currently pursuing a Master's in Business Information Systems at Torrens University, Adelaide.
+          I am an <strong>Adelaide-based IT graduate</strong> with a Master of Business Information Systems from Torrens University Australia and a Bachelor's in Computer Science Engineering from Vel Tech University, India.
         </p>
         <p>
-          My background sits at the intersection of <strong>development</strong> and <strong>quality assurance</strong> — I've written test cases in JIRA, supported enterprise web apps for a global healthcare client, and built deep learning models for academic projects. AWS certified, Agile-fluent, and ready to contribute from day one.
+          At <strong>Cognizant Technology Solutions</strong>, I spent a year working across development, software testing, and Level 1 IT support — writing Java and .NET code, executing 200+ manual test cases in JIRA, and troubleshooting Windows and Microsoft 365 issues for end users. I am currently building on that foundation as an <strong>IT Support Intern at Manvision Consulting</strong>.
         </p>
-        <div class="current-badge"><span class="pulse"></span> Currently at Woolworths Group — Adelaide CFC</div>
+        <p>
+          I write code in Java, Python, and SQL, work in Agile, and I am AWS Certified in Cloud Architecting and Cloud Foundations. Looking for entry-level roles in <strong>IT support, software testing, or junior development</strong>.
+        </p>
+        <div class="current-badge"><span class="pulse"></span> Currently at Manvision Consulting · IT Support Intern</div>
+        <div class="work-rights">
+          <span class="chip">Subclass 485 Visa</span>
+          <span class="chip">Driver's Licence + Own Vehicle</span>
+          <span class="chip">Full-time / Part-time / Hybrid / Onsite</span>
+        </div>
       </div>
       <div class="stats reveal">
         <div class="stat">
-          <div class="stat-num" data-target="2" data-suffix="+">0</div>
-          <div class="stat-label">Years industry experience</div>
+          <div class="stat-num" data-target="200" data-suffix="+">0</div>
+          <div class="stat-label">Manual test cases written &amp; executed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-target="3" data-suffix="">0</div>
+          <div class="stat-label">Professional roles held</div>
         </div>
         <div class="stat">
           <div class="stat-num" data-target="2" data-suffix="">0</div>
           <div class="stat-label">AWS certifications</div>
         </div>
         <div class="stat">
-          <div class="stat-num" data-target="2" data-suffix="">0</div>
-          <div class="stat-label">Major projects delivered</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" data-target="6" data-suffix=" mo">0</div>
-          <div class="stat-label">Cognizant training program</div>
+          <div class="stat-num" data-target="4" data-suffix="">0</div>
+          <div class="stat-label">Projects delivered</div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     EXPERIENCE
-     ============================================ -->
+ 
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <div class="section-head reveal">
@@ -1113,13 +1123,38 @@
       <h2>Where I've <span class="accent">worked.</span></h2>
     </div>
     <div class="timeline">
-
+ 
       <article class="exp-item open reveal">
         <button class="exp-header" aria-expanded="true">
+          <div class="exp-logo">M</div>
+          <div class="exp-meta">
+            <div class="exp-role">IT Support Intern</div>
+            <div class="exp-company">Manvision Consulting Pty Ltd — Australia</div>
+            <span class="exp-dates">MAY 2026 → PRESENT</span>
+          </div>
+          <span class="exp-chevron">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul>
+              <li>Building practical IT support skills in an enterprise environment with a focus on <strong>Level 1 / Level 2 ticket handling</strong> and end-user support.</li>
+              <li>Troubleshooting <strong>Windows 10/11, Microsoft 365, Outlook, Exchange, and Active Directory</strong> for end users.</li>
+              <li>Supporting user-account tasks — account creation, password resets, and group access changes under senior guidance.</li>
+              <li>Logging and updating tickets in the <strong>ITSM ticketing system</strong>, writing clear notes, and learning when to escalate to senior engineers.</li>
+              <li>Following <strong>ITIL-aligned practices</strong> for incident, request, and problem management.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+ 
+      <article class="exp-item reveal">
+        <button class="exp-header" aria-expanded="false">
           <div class="exp-logo">W</div>
           <div class="exp-meta">
             <div class="exp-role">Dispatch Team Member <span style="color:var(--text-3);font-weight:400;font-size:13px;">(Part-time)</span></div>
-            <div class="exp-company">Woolworths Group — CFC, Adelaide</div>
+            <div class="exp-company">Woolworths Group — Customer Fulfillment Centre, Adelaide</div>
             <span class="exp-dates">SEP 2025 → PRESENT</span>
           </div>
           <span class="exp-chevron">
@@ -1129,21 +1164,20 @@
         <div class="exp-body">
           <div class="exp-body-inner">
             <ul>
-              <li>Operated internal <strong>WMS and digital scanning systems</strong> to manage high-volume eCommerce order processing with strict accuracy targets.</li>
-              <li>Identified and resolved <strong>system discrepancies and order errors</strong> in real time, preventing downstream operational delays.</li>
-              <li>Consistently met <strong>accuracy and speed KPIs</strong> by adhering to SOPs and quality control processes in a fast-paced fulfillment environment.</li>
-              <li>Demonstrated reliability and attention to detail under pressure — transferable directly to QA and production-grade engineering work.</li>
+              <li>Stage customer orders on pallets and load them onto trucks <strong>quickly, safely, and accurately</strong> in a fast-paced warehouse environment.</li>
+              <li>Use <strong>warehouse scanning tools and systems</strong> to process orders correctly, fixing errors in real time to keep dispatch running smoothly.</li>
+              <li>Follow standard procedures and quality checks to consistently meet <strong>speed and accuracy targets</strong> as part of a reliable team.</li>
             </ul>
           </div>
         </div>
       </article>
-
+ 
       <article class="exp-item reveal">
         <button class="exp-header" aria-expanded="false">
           <div class="exp-logo">C</div>
           <div class="exp-meta">
-            <div class="exp-role">Program Analyst Trainee</div>
-            <div class="exp-company">Cognizant Technology Solutions — Hyderabad, India</div>
+            <div class="exp-role">Program Analyst Trainee — Development, Testing &amp; IT Support</div>
+            <div class="exp-company">Cognizant Technology Solutions — India</div>
             <span class="exp-dates">DEC 2022 → DEC 2023</span>
           </div>
           <span class="exp-chevron">
@@ -1153,91 +1187,145 @@
         <div class="exp-body">
           <div class="exp-body-inner">
             <ul>
-              <li>Completed structured <strong>6-month technical training</strong> in Java, C#, .NET and enterprise web application development practices.</li>
-              <li>Wrote and executed <strong>manual test cases</strong> for an enterprise web application supporting a global healthcare client; logged defects in JIRA and tracked them through to sign-off.</li>
-              <li>Performed <strong>regression testing and UAT support</strong> to validate that application changes met business and functional requirements.</li>
-              <li>Troubleshot application bugs, documented <strong>root causes</strong>, and communicated fixes to development and QA teams.</li>
-              <li>Collaborated daily with developers, business analysts, and QA engineers in <strong>Agile sprint cycles</strong> within a structured enterprise delivery environment.</li>
+              <li>Completed a <strong>6-month enterprise training program</strong> in Java, .NET, SQL, and full-stack web application development.</li>
+              <li>Helped build web applications by writing small code modules, fixing bugs, and reviewing other developers' code in an Agile team.</li>
+              <li>Wrote and ran <strong>200+ manual test cases</strong> covering functional, regression, and smoke testing for enterprise web apps.</li>
+              <li>Logged and tracked defects in <strong>JIRA</strong> from raise to sign-off — all within SLA timeframes.</li>
+              <li>Gave <strong>Level 1 IT support</strong> to users, fixed Windows-based issues, found root causes, and escalated tricky problems to L2/L3 teams.</li>
+              <li>Supported users during <strong>UAT</strong> and after go-live, explaining fixes in plain language to non-technical users.</li>
+              <li>Handled user account and access tasks, ensuring permissions matched business requirements.</li>
+              <li>Made the team faster by <strong>standardising test documents and knowledge-base templates</strong>, helping new trainees ramp up sooner.</li>
             </ul>
           </div>
         </div>
       </article>
-
+ 
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     SKILLS
-     ============================================ -->
+ 
+<!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <div class="section-head reveal">
       <div class="section-num">03 / Skills</div>
       <h2>The tools I <span class="accent">reach for.</span></h2>
     </div>
-
+ 
     <div class="skills-top reveal">
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">Manual Testing &amp; QA</span><span class="level">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div></div>
       <div class="skill-bar"><div class="skill-bar-head"><span class="name">Java</span><span class="level">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div></div>
-      <div class="skill-bar"><div class="skill-bar-head"><span class="name">Manual Testing & QA</span><span class="level">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-head"><span class="name">L1 / L2 IT Support</span><span class="level">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="82"></div></div></div>
       <div class="skill-bar"><div class="skill-bar-head"><span class="name">SQL</span><span class="level">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div></div>
       <div class="skill-bar"><div class="skill-bar-head"><span class="name">Python</span><span class="level">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="78"></div></div></div>
-      <div class="skill-bar"><div class="skill-bar-head"><span class="name">.NET / C#</span><span class="level">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="72"></div></div></div>
       <div class="skill-bar"><div class="skill-bar-head"><span class="name">AWS Cloud</span><span class="level">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-level="75"></div></div></div>
     </div>
-
+ 
     <div class="skill-groups">
       <div class="skill-group reveal">
         <h4>Languages</h4>
         <div class="pills">
           <span class="pill">Java</span>
           <span class="pill">Python</span>
-          <span class="pill">C#</span>
           <span class="pill">SQL</span>
+          <span class="pill">JavaScript</span>
           <span class="pill">HTML</span>
           <span class="pill">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Web &amp; Frameworks</h4>
+        <div class="pills">
+          <span class="pill">React</span>
+          <span class="pill">.NET (basics)</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">Responsive Web</span>
         </div>
       </div>
       <div class="skill-group reveal">
         <h4>QA &amp; Testing</h4>
         <div class="pills">
           <span class="pill">Manual Testing</span>
-          <span class="pill">Test Case Writing</span>
-          <span class="pill">Defect Reporting</span>
+          <span class="pill">Test Cases</span>
           <span class="pill">Regression</span>
           <span class="pill">UAT</span>
+          <span class="pill">Smoke &amp; Sanity</span>
+          <span class="pill">Defect Tracking</span>
           <span class="pill">STLC</span>
         </div>
       </div>
       <div class="skill-group reveal">
-        <h4>Frameworks &amp; Platforms</h4>
+        <h4>IT Support &amp; Service Desk</h4>
         <div class="pills">
-          <span class="pill">.NET</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">AWS</span>
-          <span class="pill">ERP / WMS</span>
-          <span class="pill">SharePoint</span>
-          <span class="pill">Power BI</span>
+          <span class="pill">L1 / L2 Support</span>
+          <span class="pill">Ticketing</span>
+          <span class="pill">SLA Management</span>
+          <span class="pill">Incident Mgmt</span>
+          <span class="pill">Remote Support</span>
+          <span class="pill">ITIL Basics</span>
         </div>
       </div>
       <div class="skill-group reveal">
-        <h4>Tools &amp; Methodologies</h4>
+        <h4>Microsoft Stack</h4>
+        <div class="pills">
+          <span class="pill">Windows 10/11</span>
+          <span class="pill">Active Directory</span>
+          <span class="pill">Microsoft 365</span>
+          <span class="pill">Exchange</span>
+          <span class="pill">SharePoint</span>
+          <span class="pill">MS Office</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Cloud &amp; Networking</h4>
+        <div class="pills">
+          <span class="pill">AWS VPC</span>
+          <span class="pill">EC2</span>
+          <span class="pill">S3</span>
+          <span class="pill">IAM</span>
+          <span class="pill">DNS</span>
+          <span class="pill">DHCP</span>
+          <span class="pill">TCP/IP</span>
+          <span class="pill">OSI Model</span>
+          <span class="pill">LAN/WAN</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Databases</h4>
+        <div class="pills">
+          <span class="pill">MySQL</span>
+          <span class="pill">SQL Server</span>
+          <span class="pill">Joins</span>
+          <span class="pill">Query Tuning</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Tools &amp; Platforms</h4>
         <div class="pills">
           <span class="pill">JIRA</span>
-          <span class="pill">Git</span>
+          <span class="pill">Git / GitHub</span>
+          <span class="pill">VS Code</span>
+          <span class="pill">Postman</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Vercel</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Methodologies</h4>
+        <div class="pills">
           <span class="pill">Agile</span>
           <span class="pill">Scrum</span>
           <span class="pill">SDLC</span>
-          <span class="pill">MS Office</span>
+          <span class="pill">STLC</span>
+          <span class="pill">ITIL</span>
+          <span class="pill">Documentation</span>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     PROJECTS
-     ============================================ -->
+ 
+<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
     <div class="section-head reveal">
@@ -1245,19 +1333,19 @@
       <h2>Featured <span class="accent">work.</span></h2>
     </div>
     <div class="projects-grid">
-
+ 
       <article class="project-card reveal">
         <span class="num">01</span>
-        <span class="project-tag">Capstone Project</span>
+        <span class="project-tag">Master's Capstone · 2025</span>
         <h3>Information Systems Architecture for a Distributed Workforce</h3>
         <p class="project-desc">
-          Designed an enterprise information systems architecture supporting remote and hybrid workforce operations, covering security, scalability, and integration requirements across the stack.
+          Designed an enterprise IT setup for remote and hybrid teams — Active Directory-style user management, Microsoft 365 collaboration, endpoint security, and multi-location support. Delivered architecture diagrams, risk &amp; compliance analysis, and governance recommendations using industry best practices.
         </p>
         <div class="project-stack">
           <span class="pill">Enterprise Architecture</span>
-          <span class="pill">Security</span>
-          <span class="pill">Integration</span>
-          <span class="pill">Scalability</span>
+          <span class="pill">Active Directory</span>
+          <span class="pill">Microsoft 365</span>
+          <span class="pill">Governance</span>
         </div>
         <div class="project-links">
           <a href="#" aria-disabled="true" style="opacity:.5;cursor:not-allowed;">
@@ -1266,19 +1354,19 @@
           </a>
         </div>
       </article>
-
+ 
       <article class="project-card reveal">
         <span class="num">02</span>
-        <span class="project-tag">Final Year Project</span>
+        <span class="project-tag">Final Year Project · 2022</span>
         <h3>Leaf Disease Detection using Deep Learning</h3>
         <p class="project-desc">
-          Built a CNN-based deep learning model in Python to classify leaf diseases from image data, achieving accurate detection across multiple plant disease categories for agricultural use cases.
+          Built and trained a CNN model in Python that spots leaf diseases across different plant types with strong accuracy. Owned the full pipeline — data cleaning, image augmentation, model training, evaluation, and visualisation of results.
         </p>
         <div class="project-stack">
           <span class="pill">Python</span>
+          <span class="pill">TensorFlow</span>
           <span class="pill">CNN</span>
-          <span class="pill">Deep Learning</span>
-          <span class="pill">Image Classification</span>
+          <span class="pill">OpenCV</span>
         </div>
         <div class="project-links">
           <a href="https://github.com/Jayanthganne" target="_blank" rel="noopener">
@@ -1287,14 +1375,59 @@
           </a>
         </div>
       </article>
-
+ 
+      <article class="project-card reveal">
+        <span class="num">03</span>
+        <span class="project-tag">Personal Project · 2025</span>
+        <h3>Personal Developer Portfolio</h3>
+        <p class="project-desc">
+          Designed and launched a responsive React portfolio that showcases my projects, skills, and certifications — works smoothly on phones and laptops. Set up Vercel hosting and DNS end-to-end, demonstrating hands-on HTML, CSS, JavaScript, Git, and deployment skills.
+        </p>
+        <div class="project-stack">
+          <span class="pill">React</span>
+          <span class="pill">Vercel</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">HTML / CSS</span>
+        </div>
+        <div class="project-links">
+          <a href="#top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Live Site
+          </a>
+          <a href="https://github.com/Jayanthganne" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+ 
+      <article class="project-card reveal">
+        <span class="num">04</span>
+        <span class="project-tag">AWS Academy · 2024</span>
+        <h3>AWS Cloud Architecting — Hands-On Labs</h3>
+        <p class="project-desc">
+          Set up VPCs, subnets, route tables, security groups, NACLs, and IAM policies in AWS Academy labs — putting cloud networking and identity &amp; access management concepts into practice end-to-end.
+        </p>
+        <div class="project-stack">
+          <span class="pill">AWS VPC</span>
+          <span class="pill">Subnets</span>
+          <span class="pill">Security Groups</span>
+          <span class="pill">IAM</span>
+          <span class="pill">NACLs</span>
+        </div>
+        <div class="project-links">
+          <a href="https://www.credly.com/badges/718ff19a-6a43-49dc-8774-80da4f8efc57" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            Verify on Credly
+          </a>
+        </div>
+      </article>
+ 
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     CERTIFICATIONS / EDUCATION
-     ============================================ -->
+ 
+<!-- CREDENTIALS -->
 <section id="credentials">
   <div class="container">
     <div class="section-head reveal">
@@ -1302,14 +1435,14 @@
       <h2>Certifications &amp; <span class="accent">education.</span></h2>
     </div>
     <div class="cert-edu-wrap">
-
+ 
       <div class="cert-edu-block">
         <h3>Certifications</h3>
         <div class="cards-grid">
           <div class="info-card reveal">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
             <div class="info-body">
-              <h4>AWS Cloud Architecting</h4>
+              <h4>AWS Academy Cloud Architecting</h4>
               <div class="meta">Amazon Web Services</div>
               <div class="year">CERTIFIED</div>
               <a class="cred-link" href="https://www.credly.com/badges/718ff19a-6a43-49dc-8774-80da4f8efc57" target="_blank" rel="noopener">Verify on Credly →</a>
@@ -1318,7 +1451,7 @@
           <div class="info-card reveal">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
             <div class="info-body">
-              <h4>AWS Cloud Foundations</h4>
+              <h4>AWS Academy Cloud Foundations</h4>
               <div class="meta">Amazon Web Services</div>
               <div class="year">CERTIFIED</div>
               <a class="cred-link" href="https://www.credly.com/badges/8b303df0-902c-4437-b469-85619b06d231" target="_blank" rel="noopener">Verify on Credly →</a>
@@ -1326,7 +1459,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="cert-edu-block">
         <h3>Education</h3>
         <div class="cards-grid">
@@ -1348,28 +1481,26 @@
           </div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     CONTACT
-     ============================================ -->
+ 
+<!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="container">
     <div class="reveal">
       <div class="section-num" style="justify-content:center;">06 / Contact</div>
       <h2 class="contact-headline">Let's build <span class="accent">something together.</span></h2>
       <p class="contact-sub">
-        Open to software engineering, QA, and program analyst roles in Adelaide and beyond. Ping me — I usually reply within 24 hours.
+        Open to entry-level IT support, software testing, and junior developer roles in Adelaide or beyond. Ping me — I usually reply within 24 hours.
       </p>
       <a href="mailto:jayanthganne45@gmail.com" class="contact-email">jayanthganne45@gmail.com</a>
       <div class="socials">
         <a class="social-link" href="mailto:jayanthganne45@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
-        <a class="social-link" href="https://www.linkedin.com/in/jayanthganne-9798b739b" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a class="social-link" href="https://www.linkedin.com/in/jayanth-ganne" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
         </a>
         <a class="social-link" href="https://github.com/Jayanthganne" target="_blank" rel="noopener" aria-label="GitHub">
@@ -1379,21 +1510,17 @@
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     FOOTER
-     ============================================ -->
+ 
+<!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
     <span>© <span id="year"></span> Jayanth Ganne</span>
     <span>Built with HTML, CSS &amp; vanilla JS · Adelaide, SA</span>
   </div>
 </footer>
-
+ 
 <script>
-  // ============================================
-  // THEME TOGGLE
-  // ============================================
+  // THEME
   const themeToggle = document.getElementById('themeToggle');
   const html = document.documentElement;
   const stored = localStorage.getItem('theme');
@@ -1403,10 +1530,8 @@
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
   });
-
-  // ============================================
-  // NAV SCROLL EFFECT
-  // ============================================
+ 
+  // NAV SCROLL
   const nav = document.getElementById('nav');
   const onScroll = () => {
     if (window.scrollY > 24) nav.classList.add('scrolled');
@@ -1414,19 +1539,15 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // ============================================
+ 
   // MOBILE MENU
-  // ============================================
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  // ============================================
+ 
   // TYPEWRITER
-  // ============================================
-  const roles = ['Software Engineer.', 'QA Engineer.', 'Program Analyst.', 'Builder.'];
+  const roles = ['IT Support Specialist.', 'Software Tester (QA).', 'Junior Developer.', 'Problem Solver.'];
   const tw = document.getElementById('typewriter');
   let roleIdx = 0, charIdx = 0, deleting = false;
   function type() {
@@ -1447,10 +1568,8 @@
     setTimeout(type, deleting ? 40 : 75);
   }
   setTimeout(type, 800);
-
-  // ============================================
-  // REVEAL ON SCROLL (Intersection Observer)
-  // ============================================
+ 
+  // REVEAL
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1461,10 +1580,8 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => io.observe(el));
-
-  // ============================================
+ 
   // STAT COUNT-UP
-  // ============================================
   const statNums = document.querySelectorAll('.stat-num');
   const statIO = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1472,7 +1589,7 @@
         const el = e.target;
         const target = parseInt(el.dataset.target, 10);
         const suffix = el.dataset.suffix || '';
-        const dur = 1200;
+        const dur = 1400;
         const start = performance.now();
         const tick = (now) => {
           const p = Math.min((now - start) / dur, 1);
@@ -1487,10 +1604,8 @@
     });
   }, { threshold: 0.5 });
   statNums.forEach(el => statIO.observe(el));
-
-  // ============================================
-  // SKILL BAR ANIMATION
-  // ============================================
+ 
+  // SKILL BARS
   const bars = document.querySelectorAll('.skill-bar-fill');
   const barIO = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1502,10 +1617,8 @@
     });
   }, { threshold: 0.3 });
   bars.forEach(b => barIO.observe(b));
-
-  // ============================================
+ 
   // ACCORDION
-  // ============================================
   document.querySelectorAll('.exp-item').forEach(item => {
     const header = item.querySelector('.exp-header');
     header.addEventListener('click', () => {
@@ -1515,10 +1628,8 @@
       header.setAttribute('aria-expanded', !isOpen);
     });
   });
-
-  // ============================================
-  // ACTIVE NAV LINK ON SCROLL
-  // ============================================
+ 
+  // ACTIVE NAV
   const sections = document.querySelectorAll('section[id], header[id]');
   const navLinkEls = document.querySelectorAll('.nav-link');
   const setActive = () => {
@@ -1533,42 +1644,56 @@
   };
   window.addEventListener('scroll', setActive, { passive: true });
   setActive();
-
-  // ============================================
-  // RESUME DOWNLOAD — builds a text resume on the fly
-  // ============================================
+ 
+  // RESUME DOWNLOAD
   document.getElementById('downloadResume').addEventListener('click', (e) => {
     e.preventDefault();
     const resume = `JAYANTH GANNE
-Computer Science Engineer | Software Tester | Developer | Program Analyst
-Adelaide, SA · +61 423 280 046 · jayanthganne45@gmail.com
-linkedin.com/in/jayanthganne-9798b739b · github.com/Jayanthganne
-
+IT Support — Software Tester (QA) — Junior Developer
+Adelaide, SA (Open to Relocate) · +61 423 280 046 · jayanthganne45@gmail.com
+linkedin.com/in/jayanth-ganne · github.com/Jayanthganne
+ 
 PROFESSIONAL SUMMARY
-Computer Science Engineer with a Master's in Business Information Systems
-and hands-on experience in software testing, application development support,
-and enterprise systems at Cognizant Technology Solutions. Skilled in Java,
-.NET, Python, and SQL, with practical experience writing test cases, logging
-defects in JIRA, and working within Agile teams. AWS certified with strong
-debugging and problem-solving skills.
-
+Adelaide-based IT graduate with a Master of Business Information Systems
+from Torrens University Australia and a Bachelor's in Computer Science
+Engineering. One year of enterprise experience at Cognizant Technology
+Solutions across development, software testing, and IT support. Skilled in
+Java, Python, SQL; comfortable with JIRA, Git, Windows, Microsoft 365,
+Active Directory, and AWS. AWS Certified. Looking for entry-level roles
+in IT support, software testing, or junior development.
+ 
 TECHNICAL SKILLS
-Languages: Java, Python, SQL, C#, HTML, CSS
-QA & Testing: Manual Testing, Test Case Writing, Defect Reporting, Regression, UAT
-Tools: JIRA, Git, REST APIs, MS Office, SharePoint, Power BI, ERP/WMS
-Methodologies: Agile, Scrum, SDLC, STLC
-Cloud: AWS Cloud Architecting, AWS Cloud Foundations
-
-WORK EXPERIENCE
-Dispatch Team Member — Woolworths Group, Adelaide (Sep 2025 – Present)
+Languages: Java, Python, SQL, JavaScript, HTML, CSS
+Web & Frameworks: .NET (basics), React, REST APIs
+QA: Manual Testing, Test Cases, Regression, UAT, Smoke & Sanity, STLC
+IT Support: L1/L2, Ticketing, SLA, Incident Mgmt, ITIL basics
+Microsoft: Windows 10/11, Active Directory, Microsoft 365, Exchange, SharePoint
+Cloud/Networking: AWS (VPC, EC2, S3, IAM), DNS, DHCP, TCP/IP, OSI, LAN/WAN
+Databases: MySQL, SQL Server
+Tools: JIRA, Git, GitHub, VS Code, Postman, Power BI, Vercel
+Methodologies: Agile, Scrum, SDLC, STLC, ITIL basics
+ 
+EXPERIENCE
+IT Support Intern — Manvision Consulting Pty Ltd, Australia (May 2026 – Present)
+Dispatch Team Member — Woolworths Group CFC, Adelaide (Sep 2025 – Present)
 Program Analyst Trainee — Cognizant Technology Solutions, India (Dec 2022 – Dec 2023)
-
+ 
+KEY PROJECTS
+- Information Systems Architecture for a Distributed Workforce (Master's Capstone, 2025)
+- Leaf Disease Detection using Deep Learning (Python/TensorFlow/CNN, 2022)
+- Personal Developer Portfolio (React/Vercel, 2025)
+- AWS Cloud Architecting Hands-On Labs (AWS Academy, 2024)
+ 
 EDUCATION
 Master of Business Information Systems — Torrens University Australia (2024–2025)
 B.Tech Computer Science & Engineering — Vel Tech University, Chennai (2018–2022)
-
+ 
 CERTIFICATIONS
-AWS Cloud Architecting · AWS Cloud Foundations`;
+AWS Academy Cloud Architecting · AWS Academy Cloud Foundations
+ 
+WORK RIGHTS
+Subclass 485 graduate visa · Full driver's licence + own vehicle
+Available for full-time, part-time, hybrid, or onsite roles`;
     const blob = new Blob([resume], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -1577,10 +1702,8 @@ AWS Cloud Architecting · AWS Cloud Foundations`;
     a.click();
     URL.revokeObjectURL(url);
   });
-
-  // ============================================
+ 
   // YEAR
-  // ============================================
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
